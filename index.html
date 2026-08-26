@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="iCTL Noord & Westpoort helpt docenten van ROC van Amsterdam met digitale tools, nieuwe werkvormen en teamtrainingen.">
+<title>iCTL Noord & Westpoort</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --roc-red:#E4002B;--roc-red-dark:#B80023;
+  --paper:#FBFAF7;--paper-red:#FDE8EC;--paper-red-2:#FBD0D8;
+  --ink:#14141F;--slate:#52524C;--slate-light:#8A8A82;
+  --line:#E3E0D8;--card:#FFFFFF;
+  --font:'Figtree',sans-serif;--mono:'Space Mono',monospace;
+  --radius:14px;--radius-lg:22px;--maxw:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+body{font-family:var(--font);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+a{color:inherit}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--roc-red);outline-offset:2px}
+.skip-link{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:10px 18px;border-radius:0 0 10px 0;z-index:200;text-decoration:none;font-weight:700;font-size:14px}
+.skip-link:focus{left:0}
+::selection{background:var(--roc-red);color:#fff}
+
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--roc-red);font-weight:700;margin-bottom:10px}
+.h2{font-size:clamp(26px,3.4vw,38px);font-weight:800;letter-spacing:-.6px;line-height:1.12}
+.lede{font-size:16px;color:var(--slate);max-width:60ch}
+
+/* ===== NAV ===== */
+.nav{position:sticky;top:0;z-index:50;background:rgba(251,250,247,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav-brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;letter-spacing:-.2px; text-decoration:none;}
+.nav-brand img { height: 40px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
+.nav-links{display:flex;gap:28px;list-style:none;font-size:14.5px;font-weight:600}
+.nav-links a{text-decoration:none;color:var(--slate);transition:color .15s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--roc-red);color:#fff;padding:10px 20px;border-radius:40px;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap;transition:background .15s}
+.nav-cta:hover{background:var(--roc-red-dark)}
+.nav-cta-alt{background:transparent;color:var(--ink);padding:9px 20px;border-radius:40px;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap;border:1px solid var(--line);transition:border-color .15s, background .15s}
+.nav-cta-alt:hover{border-color:var(--ink);background:#fff}
+.nav-burger{display:none;background:none;border:0;flex-direction:column;gap:5px;padding:8px}
+.nav-burger span{width:22px;height:2px;background:var(--ink);transition:transform .2s,opacity .2s; border-radius: 2px;}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media (max-width:760px){
+  .nav-links{position:fixed;top:63px;left:0;right:0;background:var(--paper);flex-direction:column;gap:0;border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .nav-links.open{max-height:320px}
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:16px 28px;border-bottom:1px solid var(--line)}
+  .nav-cta, .nav-cta-alt{display:none}
+  .nav-burger{display:flex}
+}
+
+/* ===== HERO + WEGWIJZER ===== */
+/* Zachte gradient achtergrond toegevoegd voor meer diepte */
+.hero{padding:64px 0 0;position:relative;overflow:hidden; background: radial-gradient(ellipse at 50% -10%, var(--paper-red) 0%, transparent 70%);}
+.hero-top{text-align:center;max-width:760px;margin:0 auto 40px}
+.hero-top .eyebrow{justify-content:center}
+.hero h1{font-size:clamp(30px,5vw,48px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:16px}
+.hero h1 span{color:var(--roc-red)}
+.hero-sub{font-size:17px;color:var(--slate);max-width:56ch;margin:0 auto}
+
+.wegwijzer{background:var(--ink);border-radius:28px 28px 0 0;padding:44px 28px 0;margin-top:44px}
+.wegwijzer-inner{max-width:var(--maxw);margin:0 auto}
+.wegwijzer-q{color:#fff;font-size:15px;font-weight:700;text-align:center;margin-bottom:22px;font-family:var(--mono);letter-spacing:.3px}
+.wegwijzer-q b{color:var(--paper-red)}
+.paths{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,255,255,.1);border-radius:16px 16px 0 0;overflow:hidden}
+.path-btn{background:#1F1F2B;color:#fff;border:0;padding:26px 18px;text-align:left;display:flex;flex-direction:column;gap:8px;transition:background .2s ease, transform .2s ease;}
+/* Subtiele lift-animatie bij hover toegevoegd */
+.path-btn:hover{background:#2B2B39; transform: translateY(-2px);}
+.path-btn.active{background:var(--roc-red); transform: translateY(0);}
+.path-btn .pnum{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.5)}
+.path-btn.active .pnum{color:rgba(255,255,255,.75)}
+.path-btn .plabel{font-size:15.5px;font-weight:700}
+.path-btn .pdesc{font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.4}
+.path-btn.active .pdesc{color:rgba(255,255,255,.85)}
+
+/* Min-height toegevoegd om layout shifts te voorkomen */
+.answer{background:var(--card);border-radius:0 0 28px 28px;padding:0; min-height: 400px; display: flex;}
+.answer-panel{display:none;padding:32px 28px 40px;animation:fade .3s ease; width: 100%;}
+.answer-panel.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.answer-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:36px;align-items:start}
+.answer-head{font-size:12px;font-family:var(--mono);text-transform:uppercase;letter-spacing:1.5px;color:var(--roc-red);font-weight:700;margin-bottom:8px}
+.answer-title{font-size:22px;font-weight:800;margin-bottom:10px;letter-spacing:-.3px}
+.answer-text{color:var(--slate);font-size:15px;margin-bottom:18px}
+.answer-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--roc-red);color:#fff;padding:12px 22px;border-radius:40px;font-weight:700;font-size:14px;text-decoration:none;display:inline-block;border:0;transition:background .15s}
+.btn-primary:hover{background:var(--roc-red-dark)}
+.btn-ghost{background:transparent;color:var(--ink);padding:12px 22px;border-radius:40px;font-weight:700;font-size:14px;text-decoration:none;display:inline-block;border:1.5px solid var(--line);transition:border-color .15s, color .15s}
+.btn-ghost:hover{border-color:var(--ink); color:var(--ink)}
+.answer-side{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
+.answer-side h4{font-size:12.5px;font-family:var(--mono);text-transform:uppercase;letter-spacing:1px;color:var(--slate);margin-bottom:12px}
+.answer-side ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.answer-side li{font-size:13.5px;color:var(--slate);display:flex;gap:8px;align-items:flex-start}
+.answer-side li::before{content:'→';color:var(--roc-red);font-weight:700;flex-shrink:0}
+
+@media (max-width:820px){
+  .paths{grid-template-columns:1fr 1fr}
+  .answer-grid{grid-template-columns:1fr}
+  .answer{min-height: auto;} /* Op mobiel de hoogte wel laten meebewegen */
+}
+@media (max-width:560px){.paths{grid-template-columns:1fr}}
+
+/* ===== SECTION GENERIC ===== */
+section{padding:88px 0}
+.section-head{margin-bottom:40px;max-width:640px}
+
+/* ===== PIJLERS ===== */
+.pijler-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+/* box-shadow toegevoegd voor diepte */
+.pijler{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px;transition:transform .2s ease,border-color .2s ease,background .2s ease, box-shadow .2s ease;text-decoration:none;display:block;width:100%;text-align:left;font-family:inherit;cursor:pointer}
+.pijler:hover{transform:translateY(-4px);border-color:var(--roc-red); box-shadow: 0 8px 24px rgba(228, 0, 43, 0.08);}
+.pijler.active{border-color:var(--roc-red);background:var(--paper-red); box-shadow: 0 4px 12px rgba(228, 0, 43, 0.05);}
+.pijler .pnum{font-family:var(--mono);font-size:11px;color:var(--roc-red);font-weight:700}
+.pijler h4{font-size:15px;font-weight:800;margin:10px 0 6px;letter-spacing:-.2px}
+.pijler p{font-size:12.5px;color:var(--slate-light);line-height:1.5}
+@media (max-width:980px){.pijler-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.pijler-grid{grid-template-columns:1fr}}
+
+.pijler-panels{margin-top:32px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:36px}
+.pijler-panel{display:none;animation:fade .3s ease}
+.pijler-panel.active{display:block}
+.act-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0}
+.act-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+.act-card h5{font-size:14.5px;font-weight:800;margin-bottom:5px;letter-spacing:-.1px}
+.act-card p{font-size:13px;color:var(--slate);line-height:1.5}
+.act-link{background:var(--paper-red);border-radius:var(--radius);padding:16px 20px;font-size:13.5px;color:var(--roc-red-dark);line-height:1.5;margin-bottom:24px}
+.act-link strong{font-weight:800}
+@media (max-width:760px){.act-grid{grid-template-columns:1fr}.pijler-panels{padding:24px}}
+
+/* ===== TEAM & AFSPRAAK ===== */
+.split{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.split-col{padding:56px 40px}
+.wrap-inner{max-width:520px;margin:0 auto;height:100%;display:flex;flex-direction:column}
+
+.split-team{background:var(--card)}
+
+.split-workshops{background:var(--ink)}
+.split-workshops .eyebrow{color:var(--paper-red-2)}
+.split-workshops .h2{color:#fff}
+.split-workshops .lede{color:rgba(255,255,255,.65)}
+
+/* ===== WORKSHOPS FULL WIDTH ===== */
+.workshops-full{background:var(--ink);padding:88px 0}
+.workshops-full .eyebrow{color:var(--paper-red-2)}
+.workshops-full .h2{color:#fff}
+.workshops-full .lede{color:rgba(255,255,255,.65)}
+.ws-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+
+/* Styling voor de workshop embedded kaarten */
+.ws-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.05);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:12px;text-decoration:none;color:#fff;transition:background .2s,transform .2s;height:100%}
+.ws-card:hover{background:rgba(255,255,255,.1);transform:translateY(-4px)}
+.ws-card strong{font-size:17px;font-weight:700;letter-spacing:-0.2px;line-height:1.3}
+.ws-card span{font-size:12px;color:var(--paper-red-2);font-weight:700;font-family:var(--mono);text-transform:uppercase;letter-spacing:1px;margin-top:auto}
+
+.split .lede{margin-bottom:16px}
+.split .btn-primary{margin-top:auto;align-self:flex-start}
+@media (max-width:1024px){.split{grid-template-columns:1fr}.split-col{padding:48px 28px}}
+@media (max-width:820px){.ws-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.ws-grid{grid-template-columns:1fr}}
+.team .btn-primary{margin-top:6px}
+
+/* ===== BOOKING ===== */
+footer{padding:34px 0;border-top:1px solid var(--line)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--slate-light)}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#wegwijzer">Naar de inhoud</a>
+
+<!-- ============ NAVIGATIE ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <img src="iCTL banner solid.jpg" alt="iCTL Noord & Westpoort Logo">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#wegwijzer">Wegwijzer</a></li>
+      <li><a href="#ondersteuning">Pijlers & Ondersteuning</a></li>
+      <li><a href="#team">Het Team</a></li>
+    </ul>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <a href="#workshops" class="nav-cta">Maak een afspraak</a>
+      <a href="mailto:ICTLNWP@rocva.nl" class="nav-cta-alt">Mail ons</a>
+      <button class="nav-burger" id="navBurger" aria-label="Menu openen/sluiten">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO + WEGWIJZER ============ -->
+<header class="hero" id="wegwijzer">
+  <div class="wrap hero-top">
+    <h1>Je bent slechts één klik verwijderd van de <span>juiste ondersteuning</span></h1>
+  </div>
+
+  <div class="wegwijzer">
+    <div class="wegwijzer-inner">
+      <p class="wegwijzer-q">Waar wil je vandaag mee geholpen worden, <b>collega</b>?</p>
+      <div class="paths" id="paths">
+        <button class="path-btn active" data-path="0">
+          <span class="pnum">01</span>
+          <span class="plabel">Ik zoek inspiratie of voorbeelden</span>
+          <span class="pdesc">Kennis en materiaal delen met en van collega's</span>
+        </button>
+        <button class="path-btn" data-path="1">
+          <span class="pnum">02</span>
+          <span class="plabel">Ik wil iets nieuws proberen</span>
+          <span class="pdesc">Een werkvorm, tool of aanpak testen in de les</span>
+        </button>
+        <button class="path-btn" data-path="2">
+          <span class="pnum">03</span>
+          <span class="plabel">Ik wil mijn team trainen</span>
+          <span class="pdesc">Een workshop of teamsessie plannen</span>
+        </button>
+        <button class="path-btn" data-path="3">
+          <span class="pnum">04</span>
+          <span class="plabel">Ik wil gewoon even sparren</span>
+          <span class="pdesc">Geen concrete vraag, wel behoefte aan een klankbord</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap answer">
+    <div class="answer-panel active" data-panel="0">
+      <div class="answer-grid">
+        <div>
+          <p class="answer-head">Kennisdeling</p>
+          <h3 class="answer-title">Meer flexibiliteit in het onderwijs door de wet VABA</h3>
+          <p class="answer-text">Per augustus is de wet VABA aangenomen. De Wet VABA (Verbetering Aansluiting Beroepsonderwijs, Arbeidsmarkt) biedt mbo-scholen de flexibiliteit om opleidingen korter en praktijkgerichter te maken, zodat deze naadloos aansluiten op de actuele vraag vanuit werkgevers.</p>
+          <div class="answer-actions">
+            <a class="btn-primary" href="https://ictlwpn.github.io/Wet-VABA/" target="_blank" rel="noopener">Lees meer</a>
+            <a class="btn-ghost" href="https://talnet.sharepoint.com/sites/ALOContent/SitePages/Kennisdeling.aspx" target="_blank" rel="noopener">Naar kennisdeling</a>
+          </div>
+        </div>
+        <div class="answer-side">
+          <h4>Wat je vindt</h4>
+          <ul>
+            <li>Praktijkvoorbeelden per vakgebied</li>
+            <li>Korte handleidingen voor veelgebruikte tools</li>
+            <li>Contact met collega's die het al deden</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="answer-panel" data-panel="1">
+      <div class="answer-grid">
+        <div>
+          <p class="answer-head">Innovatie &amp; experimenteren</p>
+          <h3 class="answer-title">Test het veilig, met iemand die meedenkt</h3>
+          <p class="answer-text">Van open leermateriaal tot VR-toepassingen: wij denken mee over wat past bij jouw les, en helpen je een eerste proef opzetten zonder dat het meteen groots hoeft.</p>
+          <div class="answer-actions">
+            <a class="btn-primary js-teams-booking" href="https://outlook.office.com/book/iCTLNoordWestpoort@talnet.onmicrosoft.com/s/CHoQD20MtkuXgoi_YlMhUQ2?ismsaljsauthenabled" target="_blank" rel="noopener">Plan een verkenningsgesprek</a>
+          </div>
+        </div>
+        <div class="answer-side">
+          <h4>Wat je kan verwachten</h4>
+          <ul>
+            <li>Eén op één gesprek van 30 minuten</li>
+            <li>Concreet voorstel voor een kleine proef</li>
+            <li>Evaluatie samen na afloop</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="answer-panel" data-panel="2">
+      <div class="answer-grid">
+        <div>
+          <p class="answer-head">Teamontwikkeling</p>
+          <h3 class="answer-title">Vind of plan de workshop die bij je team past</h3>
+          <p class="answer-text">Schrijf je in voor een aankomende workshop, of stel samen met iCTL een eigen moment samen. Van een korte Canvas-opfrisser tot een hele middag rond didactiek. De agenda hieronder loopt live mee met onze planning.</p>
+          <div class="answer-actions">
+            <a class="btn-primary js-teams-booking" href="https://outlook.office.com/book/iCTLNoordWestpoort@talnet.onmicrosoft.com/s/CHoQD20MtkuXgoi_YlMhUQ2?ismsaljsauthenabled" target="_blank" rel="noopener">Plan een verkenningsgesprek</a>
+            <a class="btn-ghost" href="#workshops">Naar workshops</a>
+          </div>
+        </div>
+        <div class="answer-side">
+          <h4>Populaire sessies</h4>
+          <ul>
+            <li>Canvas voor beginners, 60 min</li>
+            <li>Samenwerken met AI in het onderwijs, 90 min</li>
+            <li>Formatieve toetsing in Canvas, 90 min</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="answer-panel" data-panel="3">
+      <div class="answer-grid">
+        <div>
+          <p class="answer-head">Even sparren</p>
+          <h3 class="answer-title">Geen vraag te klein, geen idee te vaag</h3>
+          <p class="answer-text">Een vaag idee, een hardnekkige twijfel, of iets dat gewoon blijft knagen: soms helpt het om het hardop uit te spreken tegen iemand die meedenkt. Geen agenda, geen voorbereiding nodig, alleen ruimte om te ontdekken waar het heen gaat.</p>
+          <div class="answer-actions">
+            <a class="btn-primary js-teams-booking" href="https://outlook.office.com/book/iCTLNoordWestpoort@talnet.onmicrosoft.com/s/9u-01S94L0KHtbl9y2l1TA2?ismsaljsauthenabled" target="_blank" rel="noopener">Plan een gesprek</a>
+          </div>
+        </div>
+        <div class="answer-side">
+          <h4>Wat je kan verwachten</h4>
+          <ul>
+            <li>Een kop koffie erbij, op locatie of via Teams</li>
+            <li>Geen agenda, geen verslag, geen verplichting</li>
+            <li>Soms een doorbraak, soms gewoon een goed gesprek</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ONDERSTEUNING / PIJLERS ============ -->
+<section id="ondersteuning">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Ondersteuning</p>
+      <h2 class="h2">Onze vijf pijlers</h2>
+      <p class="lede">Elke pijler pakt een ander soort vraag op. Klik op degene die het dichtst bij jouw situatie komt.</p>
+    </div>
+    <div class="pijler-grid" id="pijlerTabs">
+      <button class="pijler active" data-pijler="0" type="button"><span class="pnum">01</span><h4>Docentontwikkeling</h4><p>Training en coaching op eigen tempo</p></button>
+      <button class="pijler" data-pijler="1" type="button"><span class="pnum">02</span><h4>Kennisdeling</h4><p>Handleidingen en voorbeelden van collega's</p></button>
+      <button class="pijler" data-pijler="2" type="button"><span class="pnum">03</span><h4>Innovatie</h4><p>Veilig experimenteren met nieuwe werkvormen</p></button>
+      <button class="pijler" data-pijler="3" type="button"><span class="pnum">04</span><h4>Ondersteuning</h4><p>Helpdesk en inloopspreekuur</p></button>
+      <button class="pijler" data-pijler="4" type="button"><span class="pnum">05</span><h4>Onderzoek</h4><p>Jouw ervaring voedt onze aanpak</p></button>
+    </div>
+
+    <div class="pijler-panels" id="pijlerPanels">
+      <div class="pijler-panel active" data-pijlerpanel="0">
+        <p class="answer-head">Pijler 01 &middot; Docentontwikkeling</p>
+        <h3 class="answer-title">Jij groeit, op jouw tempo</h3>
+        <p class="answer-text">Samen kijken we naar wat jij nodig hebt om met meer vertrouwen voor de klas te staan. Niet met een standaardpakket, maar op maat, via coaching, training of gewoon samen uitproberen wat werkt.</p>
+        <div class="act-grid">
+          <div class="act-card"><h5>Digitale didactiek</h5><p>Professionaliseringstrajecten rond blended learning, activerend online lesgeven en formatief evalueren met digitale tools</p></div>
+          <div class="act-card"><h5>Platform-trainingen</h5><p>Workshops rondom nieuwe platforms zoals Canvas LMS en digitaal toetsen</p></div>
+          <div class="act-card"><h5>AI-vaardigheden opbouwen</h5><p>Introductiesessies, promptlabs en workshops over AI-proof toetsen</p></div>
+          <div class="act-card"><h5>Coaching on the job</h5><p>Meelopen in lessen, samen lesmateriaal ontwerpen, directe feedback geven</p></div>
+          <div class="act-card"><h5>Leergemeenschappen</h5><p>Intervisiegroepen waar docenten samen experimenteren en reflecteren</p></div>
+          <div class="act-card"><h5>Onboarding nieuwe docenten</h5><p>Digitale geletterdheid als vast onderdeel van het inwerkprogramma</p></div>
+          <div class="act-card"><h5>Teacher leaders</h5><p>Docenten die in hun team het voortouw nemen bij vernieuwing faciliteren</p></div>
+          <div class="act-card"><h5>Micro-credentialing</h5><p>Badges of certificaten voor afgeronde professionaliseringsmodules</p></div>
+        </div>
+        <div class="act-link"><strong>Link met centraal CTL:</strong> generieke scholing komt van centraal; iCTL Noord &amp; Westpoort vertaalt dit naar de lokale context en adviseert centraal over wat teams nodig hebben.</div>
+        <div class="answer-actions">
+          <a class="btn-primary" href="https://talnet.sharepoint.com/sites/ALOContent/SitePages/Docentontwikkeling.aspx" target="_blank" rel="noopener">Meer over Docentontwikkeling</a>
+        </div>
+      </div>
+
+      <div class="pijler-panel" data-pijlerpanel="1">
+        <p class="answer-head">Pijler 02 &middot; Kennisdeling</p>
+        <h3 class="answer-title">Wat jij weet, helpt een ander, en andersom</h3>
+        <p class="answer-text">Goede ideeën verdienen het om gedeeld te worden. Wat jij uitprobeert in jouw les, kan een collega verder helpen. Wij zorgen dat die kennis niet verloren gaat, maar juist verder blijft leven.</p>
+        <div class="act-grid">
+          <div class="act-card"><h5>Kenniscafés &amp; showcases</h5><p>Laagdrempelige bijeenkomsten waar collega's good practices demonstreren</p></div>
+          <div class="act-card"><h5>Interne kennisbank</h5><p>Toolbox met handleidingen, templates, video-tutorials en best practices per opleiding</p></div>
+          <div class="act-card"><h5>Nieuwsbrieven &amp; blogs</h5><p>Interne communicatie over trends, succesverhalen en podcasts</p></div>
+          <div class="act-card"><h5>Ambassadeursnetwerk</h5><p>Per team een kartrekker die als brug fungeert naar het iCTL</p></div>
+          <div class="act-card"><h5>Landelijke CTL-netwerken</h5><p>Deelname aan kennisnetwerken waar instellingen van elkaar leren</p></div>
+          <div class="act-card"><h5>Overzicht kennisnetwerken</h5><p>Bijdragen aan het interactieve overzicht van samenwerkingsverbanden via Npuls</p></div>
+          <div class="act-card"><h5>Regionale bijeenkomsten</h5><p>Organiseren van of bijdragen aan regionale en landelijke kennisbijeenkomsten</p></div>
+          <div class="act-card"><h5>Community-building</h5><p>Online en fysieke ruimte waar vernieuwers elkaar vinden</p></div>
+        </div>
+        <div class="act-link"><strong>Link met centraal CTL:</strong> iCTL Noord &amp; Westpoort haalt kennis op bij centraal, deelt lokale succesverhalen en adviseert centraal over wat werkt en wat nodig is.</div>
+        <div class="answer-actions">
+          <a class="btn-primary" href="https://talnet.sharepoint.com/sites/ALOContent/SitePages/Kennisdeling.aspx" target="_blank" rel="noopener">Meer over Kennisdeling</a>
+        </div>
+      </div>
+
+      <div class="pijler-panel" data-pijlerpanel="2">
+        <p class="answer-head">Pijler 03 &middot; Innovatie</p>
+        <h3 class="answer-title">Samen met ons veilig experimenteren</h3>
+        <p class="answer-text">Nieuwsgierig naar AI, digitaal toetsen of iets গঠন wat je ergens hebt gezien? Je hoeft er nog niets van te weten. Wij bieden een veilige plek om te experimenteren, en we doen gewoon mee.</p>
+        <div class="act-grid">
+          <div class="act-card"><h5>Pilots &amp; proeftuinen</h5><p>Kleinschalige experimenten met nieuwe technologie of werkvormen in 1 tot 2 teams</p></div>
+          <div class="act-card"><h5>AI-lab</h5><p>Veilige omgeving om AI-toepassingen te verkennen voor lesvoorbereiding, differentiatie en feedback</p></div>
+          <div class="act-card"><h5>Sectorvoorzieningen adopteren</h5><p>Landelijke Npuls-voorzieningen vertalen naar de eigen praktijk</p></div>
+          <div class="act-card"><h5>Innovatiemiddagen &amp; hackathons</h5><p>Teams werken samen aan vernieuwingsideeën</p></div>
+          <div class="act-card"><h5>Intern innovatiefonds</h5><p>Stimuleringsregeling voor docentinitiatieven</p></div>
+          <div class="act-card"><h5>Van pilot naar praktijk</h5><p>Succesvolle pilots opschalen naar het reguliere onderwijs</p></div>
+          <div class="act-card"><h5>Open leermaterialen</h5><p>Experimenteren met open en digitale leermaterialen</p></div>
+          <div class="act-card"><h5>VR &amp; serious gaming</h5><p>Verkennen van VR-toepassingen, serious gaming of adaptieve leerroutes</p></div>
+        </div>
+        <div class="act-link"><strong>Link met centraal CTL:</strong> centraal biedt kaders en tooling; iCTL Noord &amp; Westpoort zorgt dat innovatie landt in de les en koppelt ervaringen en inzichten terug naar centraal.</div>
+        <div class="answer-actions">
+          <a class="btn-primary" href="https://talnet.sharepoint.com/sites/ALOContent/SitePages/Innovatie.aspx?d=w448dfb77bb2f4bb982e018031d208802&csf=1&web=1&e=G3qKBL" target="_blank" rel="noopener">Meer over Innovatie</a>
+        </div>
+      </div>
+
+      <div class="pijler-panel" data-pijlerpanel="3">
+        <p class="answer-head">Pijler 04 &middot; Ondersteuning</p>
+        <h3 class="answer-title">Jij hoeft het niet alleen uit te zoeken</h3>
+        <p class="answer-text">Of je nu een concrete vraag hebt of niet precies weet waar je moet beginnen, je kunt bij ons terecht. We denken mee, schakelen snel en kijken verder dan alleen de vraag die je stelt.</p>
+        <div class="act-grid">
+          <div class="act-card"><h5>Helpdesk &amp; inloopspreekuur</h5><p>Eerstelijns aanspreekpunt voor vragen over digitaal onderwijs (Canvas, tools, AI)</p></div>
+          <div class="act-card"><h5>Strategisch advies</h5><p>Management en directie adviseren over digitaliseringsbeleid en investeringskeuzes</p></div>
+          <div class="act-card"><h5>Curriculumondersteuning</h5><p>Meedenken bij (her)ontwerp van opleidingen met een digitale component</p></div>
+          <div class="act-card"><h5>Implementatiebegeleiding</h5><p>Begeleiding bij uitrol van nieuwe platforms zoals Canvas LMS-migratie en digitaal toetsen</p></div>
+          <div class="act-card"><h5>Team-AI-beleid</h5><p>Ondersteuning bij het opstellen van AI-beleid op teamniveau</p></div>
+          <div class="act-card"><h5>Structurele vraaganalyse</h5><p>Patronen signaleren en duurzame oplossingen aandragen in plaats van alleen losse vragen oplossen</p></div>
+          <div class="act-card"><h5>Voorzieningen verbinden</h5><p>Zorgen dat ICT-afdeling, kwaliteitszorg en onderwijsteams samenwerken</p></div>
+          <div class="act-card"><h5>Sectorale voorzieningen</h5><p>De overgang naar sectorale digitale voorzieningen faciliteren</p></div>
+        </div>
+        <div class="act-link"><strong>Link met centraal CTL:</strong> complexe of ROC-brede vraagstukken escaleren naar centraal; iCTL Noord &amp; Westpoort is het gezicht naar docenten en adviseert centraal over knelpunten en kansen uit de praktijk.</div>
+        <div class="answer-actions">
+          <a class="btn-primary" href="https://talnet.sharepoint.com/sites/ALOContent/SitePages/Ondersteuning-(technologie-en-didactiek).aspx" target="_blank" rel="noopener">Meer over Ondersteuning</a>
+        </div>
+      </div>
+
+      <div class="pijler-panel" data-pijlerpanel="4">
+        <p class="answer-head">Pijler 05 &middot; Onderzoek</p>
+        <h3 class="answer-title">Jouw ervaring maakt ons onderwijs beter</h3>
+        <p class="answer-text">Wat werkt er eigenlijk in jouw lessen? Samen onderzoeken we dat: praktisch, dichtbij en met oog voor wat jij er zelf aan hebt. Jouw dagelijkse ervaring is waardevolle kennis voor beter onderwijs.</p>
+        <div class="act-grid">
+          <div class="act-card"><h5>Praktijkgericht onderzoek</h5><p>Action research in docententeams: docenten begeleiden bij onderzoek in hun eigen lessen</p></div>
+          <div class="act-card"><h5>Pilots evalueren</h5><p>Systematische evaluatie van pilots en innovatieprojecten: werkt wat we doen?</p></div>
+          <div class="act-card"><h5>Verbinding met lectoraten</h5><p>Samenwerken met lectoraten en kenniskringen voor methodologische ondersteuning</p></div>
+          <div class="act-card"><h5>Studiedata-analyse</h5><p>Leerresultaten en procesdata gebruiken om onderwijs evidence-informed te verbeteren</p></div>
+          <div class="act-card"><h5>Publiceren &amp; presenteren</h5><p>Bevindingen delen op conferenties en in vakpublicaties</p></div>
+          <div class="act-card"><h5>Resultaten terugkoppelen</h5><p>Onderzoeksresultaten delen met het centrale CTL en landelijke netwerken</p></div>
+          <div class="act-card"><h5>Effecten CTL meten</h5><p>Meewerken aan evaluatie van de doeltreffendheid en effecten van het CTL</p></div>
+          <div class="act-card"><h5>Landelijke kennisbasis</h5><p>Bijdragen aan de landelijke kennisbasis door resultaten en opbrengsten te delen</p></div>
+        </div>
+        <div class="act-link"><strong>Link met centraal CTL:</strong> centraal coördineert onderzoekslijnen; iCTL Noord &amp; Westpoort faciliteert onderzoek in de praktijk en voedt centraal met bevindingen en aanbevelingen.</div>
+        <div class="answer-actions">
+          <a class="btn-primary" href="https://talnet.sharepoint.com/sites/ALOContent/SitePages/Onderzoek.aspx?d=we840a8c3c82844048a51f41abc49059c&csf=1&web=1&e=EaMoHA" target="_blank" rel="noopener">Meer over Onderzoek</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIJLER-DETAILPAGINA'S ============ -->
+<!-- ============ TEAM + AFSPRAAK ============ -->
+<section class="split">
+  <!-- Sectie 1: Wie zijn wij -->
+  <div id="team" class="split-col split-team">
+    <div class="wrap-inner">
+      <p class="eyebrow">Wie wij zijn</p>
+      <h2 class="h2">Het iCTL-team van Noord &amp; Westpoort</h2>
+      <p class="lede">Een groep mensen met kennis en expertise op uiteenlopende thema's, die je graag verder helpen. Lees meer over het team op de teampagina.</p>
+      <a class="btn-primary" href="https://talnet.sharepoint.com/sites/ALOContent/SitePages/Het-iCTL-team.aspx" target="_blank" rel="noopener">Maak kennis met ons team</a>
+    </div>
+  </div>
+  
+  <!-- Sectie 2: Afspraak plannen (Oude stijl hersteld) -->
+  <div id="afspraak" class="split-col split-workshops">
+    <div class="wrap-inner">
+      <p class="eyebrow">Afspraakplanner</p>
+      <h2 class="h2">Plan direct in onze agenda</h2>
+      <p class="lede">Gekoppeld aan Office 365, dus je ziet echte beschikbaarheid en krijgt meteen een bevestiging in je eigen agenda.</p>
+      <a class="btn-primary js-teams-booking" href="https://outlook.office.com/book/iCTLNoordWestpoort@talnet.onmicrosoft.com/?ismsaljsauthenabled" target="_blank" rel="noopener">Maak een afspraak</a>
+    </div>
+  </div>
+</section>
+
+<!-- Sectie 3: Workshops (Volledige breedte) -->
+<section id="workshops" class="workshops-full">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Aankomende workshops</p>
+      <h2 class="h2">Schrijf je in</h2>
+      <p class="lede">Schrijf je nu vrijblijvend in bij een van onze geplande workshops en ontwikkel je vaardigheden.</p>
+    </div>
+    
+    <div class="ws-grid">
+      <a href="https://outlook.office.com/book/iCTLNoordWestpoort@talnet.onmicrosoft.com/s/bd3f0FmY_UmqsRSzRGlMnw2?ismsaljsauthenabled" class="ws-card js-teams-booking" target="_blank" rel="noopener">
+        <strong>Canvas voor beginners</strong>
+        <span>Bekijk data &rarr;</span>
+      </a>
+      <a href="https://outlook.office.com/book/iCTLNoordWestpoort@talnet.onmicrosoft.com/s/qsXe-1mHWk-8C5aa3ycwCQ2?ismsaljsauthenabled" class="ws-card js-teams-booking" target="_blank" rel="noopener">
+        <strong>Samenwerken met AI (beginners)</strong>
+        <span>Bekijk data &rarr;</span>
+      </a>
+      <a href="https://outlook.office.com/book/iCTLNoordWestpoort@talnet.onmicrosoft.com/s/B2uF7ZPSV0-4xi2-98JFoQ2?ismsaljsauthenabled" class="ws-card js-teams-booking" target="_blank" rel="noopener">
+        <strong>Samenwerken met AI (gevorderd)</strong>
+        <span>Bekijk data &rarr;</span>
+      </a>
+    </div>
+
+    <div style="margin-top: 48px; text-align: center;">
+      <a class="btn-primary" href="https://talnet.sharepoint.com/sites/ALOContent/SitePages/Workshops.aspx" target="_blank" rel="noopener">Naar alle workshops</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>iCTL Noord &amp; Westpoort · ROC van Amsterdam</span>
+    <span>Lees meer over het <a href="https://npuls.nl/centers-for-teaching-and-learning" target="_blank" style="text-decoration:underline">Npuls CTL-kader</a></span>
+  </div>
+</footer>
+
+<script src="https://res.cdn.office.net/teams-js/2.19.0/js/MicrosoftTeams.min.js" crossorigin="anonymous"></script>
+
+<script>
+// Mobiel navigatiemenu script toegevoegd
+const navBurger = document.getElementById('navBurger');
+const navLinks = document.getElementById('navLinks');
+
+if(navBurger) {
+  navBurger.addEventListener('click', () => {
+    navBurger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+}
+
+// Wegwijzer: vraag beantwoorden
+const buttons = document.querySelectorAll('.path-btn');
+const panels = document.querySelectorAll('.answer-panel');
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    buttons.forEach(b => b.classList.remove('active'));
+    panels.forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelector(`.answer-panel[data-panel="${btn.dataset.path}"]`).classList.add('active');
+  });
+});
+
+// Ondersteuning per pijler: zelfde klik-en-toon patroon als de wegwijzer
+const pijlerTabs = document.querySelectorAll('#pijlerTabs .pijler');
+const pijlerPanels = document.querySelectorAll('.pijler-panel');
+pijlerTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    pijlerTabs.forEach(t => t.classList.remove('active'));
+    pijlerPanels.forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelector(`.pijler-panel[data-pijlerpanel="${tab.dataset.pijler}"]`).classList.add('active');
+  });
+});
+
+// Boekingslinks: forceer openen in de systeembrowser i.p.v. Teams' eigen
+// ingebouwde browser, waar Bookings-authenticatie soms niet werkt.
+// Buiten Teams, of als de SDK niet laadt, verandert er niets; de link
+// doet gewoon zijn normale werk via target="_blank".
+(function () {
+  var teamsReady = false;
+
+  if (window.microsoftTeams && window.microsoftTeams.app) {
+    window.microsoftTeams.app.initialize()
+      .then(function () { teamsReady = true; })
+      .catch(function () { teamsReady = false; });
+  }
+
+  document.querySelectorAll('.js-teams-booking').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      if (teamsReady && window.microsoftTeams && window.microsoftTeams.app) {
+        e.preventDefault();
+        window.microsoftTeams.app.openLink(link.href).catch(function () {
+          window.open(link.href, '_blank', 'noopener');
+        });
+      }
+      // Anders: gewoon de normale target="_blank"-link laten werken.
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
